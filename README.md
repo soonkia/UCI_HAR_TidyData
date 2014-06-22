@@ -23,6 +23,7 @@ Unzip this into the Data directory before running the code.
 
 **codebook.md** : Describes the transformation on the original dataset, and a description of the
 variable
+
 **runAnalysis.R** : R file that does the transform on the dataset
 
 ###Running the code
