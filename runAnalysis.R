@@ -40,7 +40,8 @@ mainfunc <- function() {
   
   #work out the average of all the data by Subject and Activity
   tidyavg<-aggregate(tidydata[,3:length(tidydata)],by=list(tidydata$SubjectID,tidydata$Activity),mean)
-  
+  names(tidyavg)[1]<-"SubjectID"
+  names(tidyavg)[2]<-"Activity"
   #write it to the as tab delimeted files
   
   write.table(tidydata,"Data/tidydata.txt",sep="\t",row.names=FALSE)
