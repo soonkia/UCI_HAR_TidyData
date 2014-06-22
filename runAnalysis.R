@@ -1,13 +1,27 @@
+## Check if data exits
+checkfiles <- function () {
+  if (!(file.exists("Data//UCI HAR Dataset//train/X_train.txt") )) {
+    print("Data not found - downloading")
+    ## The base files don't exist, redownload the dataset and unzip it
+    fileurl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+    download.file(fileurl,destfile="UCIData.zip")
+    unzip(zipfile="UCIData.zip",exdir="Data/.")
+  }
+  
+}
+
+
 ## This function does the loading and converting of the 
 ## initial datasets to tidy datasets.
 loadfiles <-function() {
+  
   #Read and merge the test and train data
-  x<-read.table("Data/test/X_test.txt",header=FALSE)
-  y<-read.table("Data/train/X_train.txt",header=FALSE)
+  x<-read.table("Data/UCI HAR Dataset/test/X_test.txt",header=FALSE)
+  y<-read.table("Data/UCI HAR Dataset/train/X_train.txt",header=FALSE)
   myData<-rbind(x,y)
   
   #Grab the column names and rename the columns
-  features<-read.table("Data/features.txt",header=FALSE)
+  features<-read.table("Data/UCI HAR Dataset/features.txt",header=FALSE)
   names(myData)<-features$V2
   
   #Filter the dataset to only have columns with std() or mean() in the name
@@ -17,17 +31,17 @@ loadfiles <-function() {
   names(myData)<-sub("\\(\\)","",names(myData))
   
   #Load the subjects and activities and bind to dataset
-  act<-read.table("Data/test/y_test.txt")
-  act<-rbind(act,read.table("Data/train/y_train.txt"))
+  act<-read.table("Data/UCI HAR Dataset/test/y_test.txt")
+  act<-rbind(act,read.table("Data/UCI HAR Dataset/train/y_train.txt"))
   names(act)[1]<-"Activity"
   
-  sub<-read.table("Data/test/subject_test.txt")
-  sub<-rbind(sub,read.table("Data/train/subject_train.txt"))
+  sub<-read.table("Data/UCI HAR Dataset/test/subject_test.txt")
+  sub<-rbind(sub,read.table("Data/UCI HAR Dataset/train/subject_train.txt"))
   names(sub)[1]<-"SubjectID"
   myData<-cbind(sub,act,myData)
   
   #replace the activity numbers with labels
-  actnames <- read.table("Data/activity_labels.txt")
+  actnames <- read.table("Data/UCI HAR Dataset/activity_labels.txt")
   myData$Activity<- actnames[match(myData$Activity,actnames[,1]),2]
   
   #return the data
@@ -36,6 +50,7 @@ loadfiles <-function() {
 
 ## load the datasets and write them to tidy dataset files 
 mainfunc <- function() {
+  checkfiles()
   tidydata<-loadfiles()
   
   #work out the average of all the data by Subject and Activity

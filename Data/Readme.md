@@ -7,6 +7,9 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 Unzip this into the Data directory before running the code.
 
+The R file does do an automatic check to see if the data is there, and will download it for you if
+needed
+
 The resulting data structure should look as follows:
 More information on the datastructure and files can be found in the Readme.txt file
 

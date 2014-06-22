@@ -28,7 +28,7 @@ variable
 
 ###Running the code
 
-1. Unzip the dataset into the Data directory
+1. The Dataset gets downloaded and unzipped to the Data folder.
 2. Load the runAnlysis.R file - ensuring that your working directory is set to the location of
 where runAnalyis.R is located
 3. Run the mainfunc() function in R
