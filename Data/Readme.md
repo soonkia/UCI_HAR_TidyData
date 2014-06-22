@@ -10,6 +10,7 @@ Unzip this into the Data directory before running the code.
 The resulting data structure should look as follows:
 More information on the datastructure and files can be found in the Readme.txt file
 
+```
 .:
 /train
 /test
@@ -51,3 +52,4 @@ total_acc_x_test.txt
 body_acc_x_test.txt
 body_acc_y_test.txt
 body_acc_z_test.txt
+```
