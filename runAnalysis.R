@@ -44,6 +44,5 @@ mainfunc <- function() {
   names(tidyavg)[2]<-"Activity"
   #write it to the as tab delimeted files
   
-  write.table(tidydata,"Data/tidydata.txt",sep="\t",row.names=FALSE)
   write.table(tidyavg,"Data/tidyavg.txt",sep="\t",row.names=FALSE)
 }
