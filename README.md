@@ -1,7 +1,11 @@
 UCI_HAR_TidyData
 ================
 
-This project converts the Human Activity Recognition Using Smartphones Data Set to a tidy dateset where we just pull the averages
+This project converts the Human Activity Recognition Using Smartphones Data Set to a tidy dateset where we just pull the averages.
+
+###Dependancies
+
+We make use of the R programming languange to do the transform, and you will require to load the code and run from R. No additional R libraries are required.
 
 
 ###Original Dataset
